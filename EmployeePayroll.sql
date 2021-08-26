@@ -12,4 +12,5 @@ StartDate varchar(20)
 insert into employee_payroll (Name,Salary,StartDate)values ('arka','50000','26-08-2021')
 insert into employee_payroll (Name,Salary,StartDate)values ('rahul','30000','26-08-2021')
 insert into employee_payroll (Name,Salary,StartDate)values ('rahul','45000','26-08-2021')
-
+--UC4 Retrieve Data
+select * from employee_payroll
