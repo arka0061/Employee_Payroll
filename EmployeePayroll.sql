@@ -80,6 +80,10 @@ add Address varchar(200) not null default 'Not Value Added';
 
 Select * from employee_payroll
 
+-- UC9 Add Basic Pay,Deduction,Taxable pay, Income Pay , Netpay 
+Alter table employee_payroll
+add BasicPay float,Deduction float,TaxablePay float, IncomeTax float,NetPay float;
+
 
 
 
