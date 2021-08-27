@@ -68,5 +68,19 @@ Select MIN(Salary) from employee_payroll Where Gender='F' Group BY Gender
 Select COUNT(Salary) from employee_payroll Where Gender='M' Group BY Gender
 Select COUNT(Salary) from employee_payroll Where Gender='F' Group BY Gender
 
+--UC8-Expanding employee_payroll database
+
+Alter table employee_payroll
+add EmployeeDepartment varchar(200) not null default 'Not Provided'
+
+Alter table employee_payroll
+add EmployeePhoneNumber BigInt not null default '0'
+
+add Address varchar(200) not null default 'Not Value Added';
+
+Select * from employee_payroll
+
+
+
 
 
