@@ -80,7 +80,42 @@ add Address varchar(200) not null default 'Not Value Added';
 
 Select * from employee_payroll
 
+-- UC9 Add Basic Pay,Deduction,Taxable pay, Income Pay , Netpay 
+Alter table employee_payroll
+add BasicPay float,Deduction float,TaxablePay float, IncomeTax float,NetPay float;
 
+Update employee_payroll 
+set EmployeePhoneNumber='9078563476',EmployeeDepartment='Editing',Address='Bangalore,IN'
+where name='arka';
 
+Update employee_payroll 
+set EmployeePhoneNumber='1046785672',EmployeeDepartment='Painting',Address='Arizona,US'
+where name ='rahul';
+
+Update employee_payroll 
+set EmployeePhoneNumber='9856242618',EmployeeDepartment='Management',Address='Chennai,IN'
+where name ='priyanka';
+
+Select * from employee_payroll
+
+Update employee_payroll 
+set EmployeePhoneNumber='6527891098',EmployeeDepartment='Cars',Address='WestBengal,IN',name='Pankaj'
+where Salary=45000
+
+ALTER TABLE employee_payroll
+DROP COLUMN Salary
+
+--UC10 Add Terissa row
+
+INSERT INTO employee_payroll(Name,StartDate,Gender,EmployeeDepartment,Address,EmployeePhoneNumber,BasicPay,Deduction,TaxablePay,IncomeTax,NetPay)
+VALUES('Terissa','2021-05-20','F','Computer','Bihar,IN','7834562345',40000,5000,0,0,35000)
+
+INSERT INTO employee_payroll(Name,StartDate,Gender,EmployeeDepartment,Address,EmployeePhoneNumber,BasicPay,Deduction,TaxablePay,IncomeTax,NetPay)
+VALUES('Terissa','2021-06-20','F','Files','Maharashtra,IN','8764536278',50000,5000,0,0,45000)
+
+Select * from employee_payroll
+
+SELECT *
+FROM employee_payroll WHERE Name='Terissa';
 
 
