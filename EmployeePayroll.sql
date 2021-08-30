@@ -118,4 +118,84 @@ Select * from employee_payroll
 SELECT *
 FROM employee_payroll WHERE Name='Terissa';
 
+--UC 11: Implement the ER Diagram into Payroll Service DB 
+--Create Table for Company
+Create Table Company(
+CompanyID int identity(1,1) primary key,
+CompanyName varchar(100)
+)
 
+Insert into Company Values('GrandBlue'),('ShowTime')
+Insert into Company Values('Gorm'),('Stellar')
+Select * from Company
+
+drop table employee_payroll
+drop table Employee
+
+create table Employee
+(EmployeeID int identity(1,1) primary key,
+CompanyIdentity int,
+EmployeeName varchar(200),
+EmployeePhoneNumber bigInt,
+EmployeeAddress varchar(200),
+StartDate date,
+Gender char,
+Foreign key (CompanyIdentity) references Company(CompanyID)
+)
+
+insert into Employee values(1,'Arka',9842905050,'WestBengal,India','2021-05-28','M')
+insert into Employee values(2,'Rahul',9842905550,'NewYork,USA','2021-06-22','M')
+insert into Employee values(3,'Alice',5678349208,'Queensland,Australia','2021-04-21','F')
+insert into Employee values(4,'Priyanka',7845623451,'Ottawa,Canada','2021-02-27','F')
+
+Select * from Employee
+
+--Create Payroll Table
+create table PayrollCalculate
+(BasicPay float,
+Deductions float,
+TaxablePay float,
+IncomeTax float,
+NetPay float,
+EmployeeIdentity int identity(1,1) primary key,
+Foreign key (EmployeeIdentity) references Employee(EmployeeID)
+)
+--Insert Values in Payroll Table
+Insert into PayrollCalculate values(40000,4000,2000,1000,37000)
+Insert into PayrollCalculate values(50000,4000,2000,1000,43000)
+Insert into PayrollCalculate values(40000,4000,2000,1000,33000)
+Insert into PayrollCalculate values(60000,4000,2000,1000,53000)
+
+select * from PayrollCalculate
+
+--Create Department Table
+create table Department
+(
+DepartmentId int identity(1,1) primary key,
+DepartName varchar(100)
+)
+--Insert Values in Department Table
+insert into Department values
+('Marketing'),
+('Sales'),
+('Publishing')
+
+Select * from Department
+
+--Create table EmployeeDepartment
+create table EmployeeDepartment
+(
+DepartmentIdentity int ,
+EmployeeIdentity int,
+Foreign key (EmployeeIdentity) references Employee(EmployeeID),
+Foreign key (DepartmentIdentity) references Department(DepartmentID)
+)
+
+--Insert Values in EmployeeDepartment
+insert into EmployeeDepartment values
+(3,1),
+(2,2),
+(1,3),
+(3,4)
+
+select * from EmployeeDepartment
