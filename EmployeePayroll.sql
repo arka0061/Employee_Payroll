@@ -99,7 +99,7 @@ where name ='priyanka';
 Select * from employee_payroll
 
 Update employee_payroll 
-set EmployeePhoneNumber='6527891098',EmployeeDepartment='Cars',Address='WestBengal,IN',name='Pankaj'
+set EmployeePhoneNumber='6527891098',EmployeeDepartment='Cars',name='Pankaj'
 where Salary=45000
 
 ALTER TABLE employee_payroll
@@ -198,4 +198,33 @@ insert into EmployeeDepartment values
 (1,3),
 (3,4)
 
+select * from Employee
+select * from Company
+Select * from PayrollCalculate
+Select * from Department
 select * from EmployeeDepartment
+
+--UC 12: Ensure all retrieve in UC 4, UC 5 and UC 7 are working with new table structure 
+
+SELECT Company.CompanyID,Company.CompanyName,Employee.EmployeeID,Employee.EmployeeName,Employee.EmployeePhoneNumber,Employee.EmployeeAddress
+from Company
+INNER JOIN Employee ON Company.CompanyID = Employee.CompanyIdentity
+
+SELECT Employee.EmployeeID,Employee.CompanyIdentity,Employee.EmployeeName,Employee.EmployeePhoneNumber,Employee.EmployeeAddress,BasicPay,PayrollCalculate.Deductions,PayrollCalculate.IncomeTax,
+PayrollCalculate.NetPay,PayrollCalculate.TaxablePay
+from PayrollCalculate
+INNER JOIN Employee on PayrollCalculate.EmployeeIdentity=Employee.EmployeeID
+
+SELECT EmployeeDepartment.DepartmentIdentity,EmployeeDepartment.EmployeeIdentity,Employee.EmployeeName,Employee.EmployeePhoneNumber,Employee.EmployeeAddress
+from Employee
+INNER JOIN EmployeeDepartment on Employee.EmployeeID=EmployeeDepartment.EmployeeIdentity
+
+SELECT EmployeeDepartment.DepartmentIdentity,EmployeeDepartment.EmployeeIdentity,Department.DepartName
+from Department
+INNER JOIN EmployeeDepartment on Department.DepartmentId=EmployeeDepartment.EmployeeIdentity
+
+
+
+
+
+
